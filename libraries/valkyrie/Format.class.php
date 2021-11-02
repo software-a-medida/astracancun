@@ -1,81 +1,66 @@
 <?php
 defined('_EXEC') or die;
 
-/**
- *
- * @package Valkyrie.Libraries
- *
- * @since 1.0.0
- * @version 1.0.0
- * @license You can see LICENSE.txt
- *
- * @author David Miguel Gómez Macías < davidgomezmacias@gmail.com >
- * @copyright Copyright (C) CodeMonkey - Platform. All Rights Reserved.
- */
-
 class Format
 {
-	/**
-     *
-     * @var object
-     */
 	private $security;
 
-	/**
-     * Constructor.
-     *
-     * @return  void
-     */
 	public function __construct()
 	{
 		$this->security = new Security();
 	}
 
-	/**
-     * Establece la zona horaria.
-     *
-	 * @static
-	 *
-     * @return  void
-     */
-	public static function set_time_zone()
+	public static function getTimeZone()
 	{
-		date_default_timezone_set(Configuration::$time_zone);
+		date_default_timezone_set(Configuration::$timeZone);
 	}
 
-	/**
-     * Obtiene la fecha y hora del servidor.
-     *
-	 * @static
-	 *
-     * @return  string
-     */
-	public static function get_date_hour()
+	public static function getDate()
 	{
-		self::set_time_zone();
+		self::getTimeZone();
+		return date('Y-m-d');
+	}
+
+	public static function getTime()
+	{
+		self::getTimeZone();
+		return date('h:i:s', time());
+	}
+
+	public static function getDateTime()
+	{
+		self::getTimeZone();
 		return date('Y-m-d h:i:s', time());
 	}
 
-	/**
-	 * Verifica si el path es del administrador.
-	 *
-	 * @static
-	 *
-	 * @return  boolean
-	 */
-	public static function check_path_admin()
+	public static function getDateHour()
 	{
-		$cwd = Security::DS(getcwd());
-		$path_administrator = Security::DS(PATH_ADMINISTRATOR);
-
-		return ( $cwd == $path_administrator ) ? true : false;
+		self::getTimeZone();
+		return date('Y-m-d h:i:s', time());
 	}
 
-	/**
-	 * Obtiene la base de la URL.
-	 *
-	 * @return  string
-	 */
+	public function checkAdmin($urlAdmin, $url)
+	{
+		return ( $this->adminPath() === true ) ? $this->security->directorySeparator($urlAdmin) : $this->security->directorySeparator($url);
+	}
+
+	public function adminPath()
+	{
+		$cwd = $this->security->directorySeparator(getcwd());
+		$pathAdministrator = $this->security->directorySeparator(PATH_ADMINISTRATOR);
+
+		if($cwd === $pathAdministrator)
+			return true;
+		else
+			return false;
+	}
+
+    public function imagesBase64($image)
+    {
+        $type = pathinfo($image, PATHINFO_EXTENSION);
+        return 'data:image/' . $type . ';base64,' . base64_encode(file_get_contents($image));
+    }
+
 	public function baseurl()
 	{
 		$uri = $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
@@ -84,123 +69,95 @@ class Format
         return Security::protocol() . $uri;
 	}
 
-	/**
-	 * Verifica si existe una peticion AJAX.
-	 *
-	 * @return  boolean
-	 */
-	public static function exist_ajax_request()
+    public static function elapsed($hour, $compare)
+    {
+        $start_date = new DateTime($hour);
+        $since_start = $start_date->diff(new DateTime($compare));
+
+        if($since_start->d == 1)
+            return Language::getLang('{$lang.state_time}', 'System') . ' ' . $since_start->d . ' ' . Language::getLang('{$lang.day_ago}', 'System');
+        if($since_start->d > 1)
+            return Language::getLang('{$lang.state_time}', 'System') . ' ' . $since_start->d . ' ' . Language::getLang('{$lang.days_ago}', 'System');
+
+        if($since_start->h == 1)
+            return Language::getLang('{$lang.state_time}', 'System') . ' ' . $since_start->h . ' ' . Language::getLang('{$lang.hour_ago}', 'System');
+        if($since_start->h > 1)
+            return Language::getLang('{$lang.state_time}', 'System') . ' ' . $since_start->h . ' ' . Language::getLang('{$lang.hours_ago}', 'System');
+
+        if($since_start->i == 1)
+            return Language::getLang('{$lang.state_time}', 'System') . ' ' . $since_start->i . ' ' . Language::getLang('{$lang.minute_ago}', 'System');
+        if($since_start->i > 1)
+            return Language::getLang('{$lang.state_time}', 'System') . ' ' . $since_start->i . ' ' . Language::getLang('{$lang.minutes_ago}', 'System');
+
+        if($since_start->s == 1)
+            return Language::getLang('{$lang.state_time}', 'System') . ' ' . $since_start->s . ' ' . Language::getLang('{$lang.second_ago}', 'System');
+        if($since_start->s > 1)
+            return Language::getLang('{$lang.state_time}', 'System') . ' ' . $since_start->s . ' ' . Language::getLang('{$lang.seconds_ago}', 'System');
+    }
+
+	public static function existAjaxRequest()
 	{
-		return ( !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) ? true : false;
+		if (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+		    && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
+			return true;
+		return false;
 	}
 
-	/**
-	 * No permitir peticiones por AJAX.
-	 *
-	 * @return  void
-	 */
-	public static function no_ajax()
+	public static function dieAjax()
 	{
-		if ( self::exist_ajax_request() )
+		if (self::existAjaxRequest() == TRUE)
 			die();
 	}
 
-	/**
-	 * Remplaza en un string, los key por los valores de un array.
-	 *
-	 * @static
-	 *
-	 * @param	array    $arr    Arreglo a remplazar las llaves por los valores.
-	 * @param	string   $string Cadena donde se remplazara.
-	 *
-	 * @return  string
-	 */
-	public static function replace( $arr, $string )
+	public function replace($arr, $string)
     {
         return str_replace(array_keys($arr), array_values($arr), $string);
     }
 
-	/**
-	 * Remplaza la llamada de un fichero, por el fichero.
-	 *
-	 * @param	string    $buffer    Buffer pre-cargado.
-	 * @param	string	  $name_file Nombre del fichero solicitado.
-	 * @param	string	  $path		 Ruta del fichero.
-	 *
-	 * @return  mixed
-	 */
-	public function include_file( $buffer = false, $name_file = false, $path = false )
+	public function replaceFile($data, $file, $path = false)
 	{
-		if ( $buffer == false || $name_file == false )
-			return null;
+		if($path === FALSE)
+			$path = $this->checkAdmin(PATH_ADMINISTRATOR_LAYOUTS, PATH_LAYOUTS);
 
-		if ( $path == false )
-			$path = ( self::check_path_admin() ) ? PATH_ADMINISTRATOR_LAYOUTS : PATH_LAYOUTS;
+		$route = $path . $file . '.php';
 
-		$route = Security::DS("{$path}{$name_file}.php");
-
-		if ( file_exists($route) )
+		if(file_exists($route))
 		{
 			ob_start();
 
 			require_once $route;
 
-			$new_file = ob_get_contents();
-
-			ob_end_clean();
-
-			return str_replace('%{' . $name_file . '}%', $new_file, $buffer);
-		}
-	}
-
-	/**
-	 * Obtiene un fichero.
-	 *
-	 * @param	string    $file    Fichero
-	 *
-	 * @return  mixed
-	 */
-	public function get_file( $file = false )
-	{
-		if ( $file == false )
-			return null;
-
-		$file = Security::DS($file);
-
-		if ( file_exists($file) )
-		{
-			ob_start();
-
-			require_once $file;
-
 			$buffer = ob_get_contents();
 
 			ob_end_clean();
 
-			return $buffer;
+			return str_replace('%{' . $file . '}%', $buffer, $data);
 		}
 	}
 
-	/**
-	 * Obtiene un fichero.
-	 *
-	 * @param	string    $path       Directorio del fichero.
-	 * @param	string	  $file_name  Nombre del fichero.
-	 * @param	string	  $file_type  Tipo de fichero.
-	 *
-	 * @return  mixed
-	 */
-	public function import_file( $path, $file_name, $file_type )
+	public function getFile($file)
 	{
-		$supported_file_type = ['ini','php','html','json'];
+		ob_start();
 
-		if (in_array($file_type, $supported_file_type))
+		require_once $file;
+
+		$buffer = ob_get_contents();
+
+		ob_end_clean();
+		return $buffer;
+	}
+
+	public function fileInclude($path, $fileName, $fileType)
+	{
+		$supportedFileType = ['ini','php','html','json'];
+
+		if (in_array($fileType, $supportedFileType))
 		{
-			$file = Security::DS("{$path}{$file_name}.{$file_type}");
+			$file = Security::directorySeparator($path . $fileName . '.' . $fileType);
 
-			if ( file_exists($file) )
+			if (file_exists($file))
 			{
-				switch ( $file_type )
+				switch ($fileType)
 				{
 					case 'ini':
 						return parse_ini_file($file, true);
@@ -211,7 +168,7 @@ class Format
 						break;
 
 					case 'html':
-						return $this->get_file($file);
+						return $this->getFile($file);
 						break;
 
 					case 'json':
@@ -222,4 +179,128 @@ class Format
 		}
 	}
 
+	public function createImage( $src, $path = PATH_IMAGES, $width = false, $height = false, $thumb = false )
+	{
+		list($type, $src) = explode(';', $src);
+		list(, $src)      = explode(',', $src);
+
+		$src  = base64_decode($src);
+		$name = $this->security->randomString(32) . '.png';
+		$file = $path . $name;
+
+		$success = file_put_contents($file, $src);
+
+		if ($width != false && $height != false)
+			$this->cutImage( $file, $width, $height );
+
+		if ($thumb == true)
+		{
+			$thumb = $path . 'thumb_' . $name;
+			$success = file_put_contents($thumb, $src);
+			$this->cutImage( $thumb, 500, 500 );
+		}
+
+		return $name;
+	}
+
+	public function cutImage($path, $minWidthSize = 200, $maxHeightSize = 200)
+	{
+		$infoImage  = getimagesize($path);
+		$sizeWidth  = $infoImage[0];
+		$sizeHeight = $infoImage[1];
+		$typeImage  = $infoImage['mime'];
+
+		$imageProportion = $sizeWidth / $sizeHeight;
+		$thumbProportion = $minWidthSize / $maxHeightSize;
+
+		if ( $imageProportion > $thumbProportion )
+		{
+			$thumbWidth = $maxHeightSize * $imageProportion;
+			$thumbHeight = $maxHeightSize;
+		}
+		else if ( $imageProportion < $thumbProportion )
+		{
+			$thumbWidth = $minWidthSize;
+			$thumbHeight = $minWidthSize / $imageProportion;
+		}
+		else
+		{
+			$thumbWidth = $minWidthSize;
+			$thumbHeight = $maxHeightSize;
+		}
+
+		$x = ( $thumbWidth - $minWidthSize ) / 2;
+		$y = ( $thumbHeight - $maxHeightSize ) / 2;
+
+		switch ( $typeImage )
+		{
+			case "image/jpg":
+			case "image/jpeg":
+				$image = imagecreatefromjpeg( $path );
+				break;
+			case "image/png":
+				$image = imagecreatefrompng( $path );
+				break;
+			case "image/gif":
+				$image = imagecreatefromgif( $path );
+				break;
+		}
+
+		$canvas 	= imagecreatetruecolor( $minWidthSize, $maxHeightSize );
+		$tmpCanvas 	= imagecreatetruecolor( $thumbWidth, $thumbHeight );
+
+		imagecopyresampled($tmpCanvas, $image, 0, 0, 0, 0, $thumbWidth, $thumbHeight, $sizeWidth, $sizeHeight);
+		imagecopy($canvas, $tmpCanvas, 0,0, $x, $y, $minWidthSize, $maxHeightSize);
+
+		imagejpeg($canvas, $path, 100);
+	}
+
+	public static function checkAccessPermissions( $levels = [] )
+    {
+		$permission = false;
+
+		foreach ($levels as $level)
+		{
+			if (Session::getValue('level') == $level)
+				$permission = true;
+		}
+
+        return $permission;
+    }
+
+	public static function checkAccessPermissions2( $levels = [] )
+    {
+		$permission = false;
+
+		foreach ($levels as $level)
+		{
+			if (Session::getValue($level) == true)
+				$permission = true;
+		}
+
+        return $permission;
+    }
+
+	public static function currencyExchange( $currency = 'EUR', $amount = 0 )
+    {
+        $database = new Medoo();
+        $exchange = $database->select('settings', ['exchangues_rates']);
+
+        if ( isset($exchange[0]) && !empty($exchange[0]) )
+        {
+            $exchange = json_decode($exchange[0]['exchangues_rates']);
+
+            if ( $exchange->{$currency} )
+            {
+                $exchange = $exchange->{$currency};
+                $response = $amount * $exchange;
+
+                return $response;
+            }
+
+            return null;
+        }
+
+        return null;
+    }
 }

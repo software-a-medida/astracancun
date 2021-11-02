@@ -1,121 +1,54 @@
 <?php
 defined('_EXEC') or die;
 
-/**
- *
- * @package Valkyrie.Libraries
- *
- * @since 1.0.0
- * @version 1.0.0
- * @license You can see LICENSE.txt
- *
- * @author David Miguel Gómez Macías < davidgomezmacias@gmail.com >
- * @copyright Copyright (C) CodeMonkey - Platform. All Rights Reserved.
- *
- * @todo Se actualizara el sistema para usar namespaces y permitir a las librerias ser independientes por clasificación.
- */
-
 class Framework
 {
-	/**
-	 * Framework.
-	 *
-     * @var const
-     */
+	// Product name.
 	const PRODUCT = 'Valkyrie Platform';
-
-	/**
-	 * Versión del release.
-	 *
-     * @var const
-     */
-	const RELEASE = '1.0.0';
-
-	/**
-	 * Estado del framework.
-	 *
-     * @var const
-     */
+	// Release version.
+	const RELEASE = '1.1.2';
+	// Maintenance version.
+	const MAINTENANCE = '1';
+	// Development STATUS.
 	const STATUS = 'Development';
-
-	/**
-	 * Nombre de la versión.
-	 *
-     * @var const
-     */
-	const VERSION_NAME = 'Odín';
-
-	/**
-	 * Fecha del release.
-	 *
-     * @var const
-     */
+	// Build number.
+	const BUILD = 1;
+	// Version name.
+	const VERSION_NAME = 'Gladheim';
+	// Release date.
 	const RELEASE_DATE = '18 May 16';
-
-	/**
-	 * Hora del release.
-	 *
-     * @var const
-     */
+	// Release time.
 	const RELEASE_TIME = '12:15';
-
-	/**
-	 * Zona horaria del release.
-	 *
-     * @var const
-     */
+	// Release timezone.
 	const RELEASE_TIME_ZONE = 'GMT';
-
-	/**
-	 * Copyright.
-	 *
-     * @var const
-     */
+	// Copyright Notice.
 	const COPYRIGHT = 'Copyright (C) CodeMonkey - Platform. All Rights Reserved.';
 
-	/**
-	 * Constructor.
-     *
-     * @return  void
-     */
 	public function __construct()
 	{
-		$this->file_configuration();
-		$this->error_reporting(Configuration::$error_reporting);
-
-		Session::name();
-        Session::init();
-		Format::set_time_zone();
+		$this->fileConfiguration();
+		$this->errorReporting(Configuration::$error_reporting);
 	}
 
-	/**
-     * Importa el archivo de configuración.
-     *
-     * @return  void
-     */
-	private function file_configuration()
+	private function fileConfiguration()
 	{
-		$path_configuration = Security::DS(PATH_CONFIGURATION);
-
-		if ( !file_exists($path_configuration) || (filesize($path_configuration) < 10) )
+		if(!file_exists(PATH_CONFIGURATION) || (filesize(PATH_CONFIGURATION) < 10))
 			Errors::system('not_file_configuration');
 		else
-			require_once $path_configuration;
+			require_once PATH_CONFIGURATION;
 	}
 
-	/**
-     * Establece cuáles errores de PHP son notificados.
-     *
-	 * @param	string    $str    valor de configuración.
-	 *
-     * @return  integer
-     */
-	private function error_reporting( $str )
+	private function errorReporting($str)
 	{
-		$case = [];
-
-		switch ( $str )
+		$case = array();
+		switch ($str)
 		{
+			case 'default':
+			case '-1':
+				$case['error'] = '';
+				$case['ini'] = '0';
+				break;
+
 			case 'none':
 			case '0':
 				$case['error'] = '0';
@@ -137,15 +70,24 @@ class Framework
 				$case['ini'] = '1';
 				break;
 
-			case 'default':
-			case '-1':
 			default:
-				$case['error'] = '';
-				$case['ini'] = '0';
+				$case['error'] = Config::$general['error_reporting'];
+				$case['ini'] = '1';
 				break;
 		}
 
 		return error_reporting($case['error']) . ini_set('display_errors', $case['ini']);
+	}
+
+	public static function getShortVersion()
+	{
+		return self::RELEASE . '.' . self::MAINTENANCE;
+	}
+
+	public static function getLongVersion()
+	{
+		return self::PRODUCT . ' ' . self::RELEASE . '.' . self::MAINTENANCE . ' ' . self::STATUS . ' [ ' . self::VERSION_NAME . ' ] '
+			 . self::RELEASE_DATE . ' ' . self::RELEASE_TIME . ' ' . self::RELEASE_TIME_ZONE;
 	}
 
 }

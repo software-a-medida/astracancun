@@ -1,0 +1,24 @@
+header.header {
+    background-color: #009688; /* 500 */
+    color: #FFF;
+}
+
+.btn.btn-colored,
+button.btn-colored {
+    background-color: #009688; /* 500 */
+}
+
+input[type="radio"]:checked:before {
+    background-color: #009688; /* 500 */
+    border-color: #009688; /* 500 */
+}
+
+.btn.btn-colored:hover:not([disabled]),
+button.btn-colored:hover:not([disabled]) {
+    background-color: #004d40; /* 900 */
+}
+
+div.page h3.subtitle {
+    color: #009688;
+    border-bottom: 2px solid #009688;
+}

@@ -1,0 +1,34 @@
+@media print {
+    body {
+        background-color: #FFF;
+    }
+
+    header.header,
+    div.page > h3.subtitle,
+    div.page > .content > p,
+    .ticket_oxxopay .instructions ol li a,
+    div.page > .text-center {
+        display: none;
+    }
+
+    main {
+        top: 0;
+        margin: 0 auto;
+    }
+
+    div.page {
+        width: 100%;
+        max-width: initial;
+        margin: 0;
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        -ms-box-shadow: none;
+        -o-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .ticket_oxxopay {
+        margin: 0 auto;
+    }
+}

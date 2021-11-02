@@ -1,193 +1,126 @@
 <?php
 defined('_EXEC') or die;
 
-/**
- *
- * @package Valkyrie.Libraries
- *
- * @since 1.0.0
- * @version 1.0.0
- * @license You can see LICENSE.txt
- *
- * @author David Miguel Gómez Macías < davidgomezmacias@gmail.com >
- * @copyright Copyright (C) CodeMonkey - Platform. All Rights Reserved.
- */
-
 class Layout
 {
-    /**
-     *
-     * @var object
-     */
     private $framework;
-
-    /**
-     *
-     * @var object
-     */
     private $security;
-
-    /**
-     *
-     * @var object
-     */
     private $render;
-
-    /**
-     *
-     * @var object
-     */
     private $language;
-
-    /**
-     *
-     * @var object
-     */
     private $format;
-
-    /**
-     *
-     * @var string
-     */
     private $controller;
-
-    /**
-     *
-     * @var string
-     */
     private $method;
-
-    /**
-     *
-     * @var string
-     */
     private $params;
-
-    /**
-     *
-     * @var string
-     */
     private $route;
 
-    /**
-	 * Constructor.
-     *
-     * @return  void
-     */
     public function __construct()
     {
+        Session::name();
+        Session::init(['cookie_lifetime' => 86400]);
+
         $this->framework = new Framework();
         $this->security = new Security();
         $this->render = new Render();
         $this->language = new Language();
         $this->format = new Format();
+        $this->loadPage();
 
-        $this->load_page();
+        Format::getTimeZone();
     }
 
-    /**
-     * Imprime todo el contendio ya procesado.
-     *
-     * @final
-     *
-     * @return  string
-     */
     public function execute()
     {
         ob_start("ob_gzhandler");
 
-		$this->load_controller();
+		// Load template
+		$this->loadController();
 
-		if ( !defined('_title') )
-			define('_title', Configuration::$web_page . ' - ' . Framework::PRODUCT);
+		if(!defined('_title'))
+			define('_title', Configuration::$webPage . ' - Valkyrie Platform');
 
-		if ( !defined('_lang') )
-			define('_lang', Configuration::$lang_default);
+		if(!defined('_lang'))
+			define('_lang', Configuration::$langDefault);
 
 		$buffer = ob_get_contents();
 
+		// Rendering
 		$buffer = $this->render($buffer);
 
 		ob_end_clean();
-
 		return $buffer;
     }
 
-    /**
-     * Prepara las variables a partir de la url para solicitar el controlador y metodos.
-     *
-     * @return void
-     */
-    private function load_page()
+    private function loadPage()
     {
-        if ( Configuration::$url_friendly === true && isset($_SERVER['PATH_INFO']) )
+        if(Configuration::$urlFriendly === true && isset($_SERVER['PATH_INFO']))
         {
             $url = str_replace('-', '_', $_SERVER['PATH_INFO']);
             $url = explode('/', $url);
-
             unset($url[0]);
 
-            $this->controller = (isset($url[1])) ? ucwords( Security::clean_string($url[1]) ) : 'Index';
-            $this->method     = (isset($url[2])) ? strtolower( Security::clean_string($url[2]) ) : 'index';
+			$_SESSION['lang'] = Functions::getAvailableLanguages($url[1]);
+            $this->controller = (isset($url[2]) && !empty($url[2]) )? ucwords( $this->security->cleanUrl($url[2]) ) : 'Index';
+            $this->method     = (isset($url[3]) && !empty($url[3]) )? strtolower( $this->security->cleanUrl($url[3]) ) : 'index';
 
             unset($url[1]);
             unset($url[2]);
+			unset($url[3]);
 
-            foreach ( $url as $param )
+            foreach ($url as $param)
                 $this->params .= $param . '/';
 
-            $this->params = ( isset($url[3]) )? substr($this->params, 0, -1) : '';
+            $this->params = (isset($url[4]))? substr($this->params, 0, -1) : '';
 
             unset($url);
         }
-        elseif ( Configuration::$url_friendly === false && isset($_GET['c']) )
-        {
-            $this->controller = (isset($_GET['c']))? ucwords( Security::clean_string($_GET['c']) ) : 'Index';
-            $this->method     = (isset($_GET['m']))? strtolower( Security::clean_string($_GET['m']) ) : 'index';
-            $this->params     = (isset($_GET['p']))? $_GET['p'] : '';
-        }
+		else
+		{
+			header("Location: /" . Functions::getLangSystem());
+			exit;
+		}
 
-        if ( empty($this->controller) )
-            $this->controller = 'Index';
+        //elseif(Configuration::$urlFriendly === false && isset($_GET['c']))
+        //{
+        //    $this->controller = (isset($_GET['c']))? ucwords( $this->security->cleanUrl($_GET['c']) ) : 'Index';
+        //    $this->method     = (isset($_GET['m']))? strtolower( $this->security->cleanUrl($_GET['m']) ) : 'index';
+        //    $this->params     = (isset($_GET['p']))? $_GET['p'] : '';
+        //}
 
-        if ( empty($this->method) )
-            $this->method = 'index';
+        //if(empty($this->controller))
+        //    $this->controller = 'Index';
+        //if(empty($this->method))
+        //    $this->method = 'index';
     }
 
-    /**
-     * Obtiene la informacion del controlador solicitado.
-     *
-     * @return  void
-     */
-    private function load_controller()
+    private function loadController()
 	{
-        $path = Security::DS(PATH_CONTROLLERS . $this->controller . CONTROLLER_PHP . '.php');
+        $path = $this->security->directorySeparator(PATH_CONTROLLERS . $this->controller . CONTROLLER_PHP . '.php');
 
-		if ( file_exists($path) )
+		if(file_exists($path))
 		{
 			require_once $path;
-
             $controller = $this->controller . CONTROLLER_PHP;
 			$controller = new $controller();
 
-			if ( isset($this->method) )
+			if (isset($this->method))
 			{
-				if ( method_exists($controller, $this->method) )
+				if (method_exists($controller, $this->method))
 				{
-                    if ( file_exists(Security::DS(PATH_MY_LIBRARIES . 'Route_vkye' . CLASS_PHP)) )
+                    if (file_exists(PATH_MY_LIBRARIES . 'Route' . CLASS_PHP))
                     {
-                        $this->route = new Route_vkye('/' . $this->controller . '/' . $this->method);
+                        $this->route = new Route('/' . $this->controller . '/' . $this->method);
 
-                        $this->route->on_change_start();
+                        $this->route->onChangeStart();
+                        $this->route->onChange();
                     }
 
-					if ( isset($this->params) )
+					if (isset($this->params))
 						$controller->{$this->method}($this->params);
 					else
 						$controller->{$this->method}();
 
-                    if ( file_exists(Security::DS(PATH_MY_LIBRARIES . 'Route_vkye' . CLASS_PHP)) )
-                        $this->route->on_change_end();
+                    if (file_exists(PATH_MY_LIBRARIES . 'Route' . CLASS_PHP))
+                        $this->route->onChangeEnd();
 				}
 				else
                     Errors::http('404', '{method_does_exists}');
@@ -199,26 +132,13 @@ class Layout
             Errors::http('404', '{controller_does_exists}');
 	}
 
-    /**
-     * Renderiza todo el buffer remplazando placeholder.
-     *
-     * @param   string    $buffer    Buffer pre-cargado.
-     *
-     * @return  string
-     */
-    private function render( $buffer )
+    private function render($buffer)
     {
-        if ( file_exists(Security::DS(PATH_MY_LIBRARIES . 'Placeholders_vkye' . CLASS_PHP)) )
-        {
-            $placeholders = new Placeholders_vkye( $buffer );
-            $buffer = $placeholders->run();
-        }
-
-        $buffer = Language::get_lang($buffer);
+        $buffer = Language::getLang($buffer);
         $buffer = $this->render->placeholders($buffer);
         $buffer = $this->render->paths($buffer);
 
-        if ( Configuration::$compress_html === true )
+        if(Configuration::$compressHtml === TRUE)
 			$buffer = preg_replace(array('//Uis', "/[[:blank:]]+/"), array('', ' '), str_replace(array("\n", "\r", "\t"), '', $buffer));
 
 		return $buffer;

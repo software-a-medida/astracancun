@@ -1,98 +1,67 @@
 <?php
 defined('_EXEC') or die;
 
-/**
- *
- * @package Valkyrie.Libraries
- *
- * @since 1.0.0
- * @version 1.0.0
- * @license You can see LICENSE.txt
- *
- * @author David Miguel Gómez Macías < davidgomezmacias@gmail.com >
- * @copyright Copyright (C) CodeMonkey - Platform. All Rights Reserved.
- */
-
 class Security
 {
-    /**
-     * Quita caracteres especiales de un string.
-     *
-     * @static
-     *
-     * @param   string    $str    Cadena de texto
-     *
-     * @return  string
-     */
-    public static function clean_string( $str )
+    public function __construct()
+	{
+	}
+
+    public function cleanUrl($url = false)
     {
-        if ( $str !== false )
+        if($url !== false)
         {
+            $url = strtolower($url);
+
             $find   = array('á', 'é', 'í', 'ó', 'ú', 'ñ');
             $repl   = array('a', 'e', 'i', 'o', 'u', 'n');
-            $str    = str_replace($find, $repl, $str);
+            $url    = str_replace($find, $repl, $url);
 
             $find   = array(' ', '&', '\r\n', '\n', '+');
-            $str    = str_replace ($find, '-', $str);
+            $url    = str_replace ($find, '-', $url);
 
-            // $find   = array('/[^a-z0-9\/-_<>]/', '/[\-]+/', '/<[^>]*>/');
-            // $repl   = array('', '-', '');
-            // $url    = preg_replace($find, $repl, $url);
+            $find   = array('/[^a-z0-9\/-_<>]/', '/[\-]+/', '/<[^>]*>/');
+            $repl   = array('', '-', '');
+            $url    = preg_replace($find, $repl, $url);
 
-            $str = strtolower($str);
+            return $url;
         }
-
-        return $str;
     }
 
-    /**
-     * Remplaza los slashes de un uri por los default del sistema.
-     *
-     * @static
-     *
-     * @param   string    $path    URI
-     * @return  string
-     */
-    public static function DS( $path )
+    public static function directorySeparator($path)
     {
-        $path = str_replace('/', DIRECTORY_SEPARATOR, $path);
-
-        $parts = explode(DIRECTORY_SEPARATOR, $path);
-
-        $return = "";
-
-        foreach ( $parts as $value )
-        {
-            if ( !empty($value) )
-                $return .= $value . DIRECTORY_SEPARATOR;
-        }
-
-        $return = substr($return, 0, -1);
-
-        return $return;
+        return str_replace('/', DIRECTORY_SEPARATOR, $path);
     }
 
-    /**
-     * Obtiene el protocolo Web en uso.
-     *
-     * @static
-     *
-     * @return  string
-     */
     public static function protocol()
     {
-        return ( isset($_SERVER['HTTPS']) ) ? "https://" : "http://";
+        if(isset($_SERVER['HTTPS']))
+            return 'https://';
+        else
+            return 'http://';
     }
 
-    /**
-     * Crea un hash encriptado con la clave secreta de la configuración.
-     *
-     * @param   string    $algorithm    Tipo de algoritmo para usar.
-     * @param   string    $data
-     *
-     * @return  string
-     */
-    public function create_hash( $algorithm, $data )
+    public static function checkEncoder($encoder, $string = false)
+	{
+		switch ($encoder)
+		{
+			case 'base64':
+				if (base64_encode(base64_decode($string, true)) === $string)
+					return true;
+				else
+					return false;
+				break;
+
+			case 'json':
+				if (json_encode(json_decode($string, true)) === $string)
+					return true;
+				else
+					return false;
+				break;
+		}
+	}
+
+    public function createHash($algorithm, $data)
 	{
 		$context = hash_init($algorithm, HASH_HMAC, Configuration::$secret);
 		hash_update($context, $data);
@@ -100,29 +69,76 @@ class Security
 		return hash_final($context);
 	}
 
-    /**
-     * Crea una password encriptada.
-     *
-     * @param   string    $string    Password para encriptar.
-     *
-     * @return  string
-     */
-	public function create_password( $string )
+	public function createPassword($string)
 	{
-		$salt = $this->random_string(64);
-		$password = $this->create_hash('sha1', $string . $salt);
-
+		$salt = $this->randomString(64);
+		$password = $this->createHash('sha1', $string . $salt);
 		return $password . ':' . $salt;
 	}
 
-    /**
-     * Genera un numero dado de bytes.
-     *
-     * @param   integer    $length    Numero de bytes.
-     *
-     * @return  mixed
-     */
-    public function random_bytes( $length = 16 )
+    public function getIp()
+	{
+		if (isset($_SERVER["HTTP_CLIENT_IP"]))
+            return $_SERVER["HTTP_CLIENT_IP"];
+		elseif (isset($_SERVER["HTTP_X_FORWARDED_FOR"]))
+            return $_SERVER["HTTP_X_FORWARDED_FOR"];
+		elseif (isset($_SERVER["HTTP_X_FORWARDED"]))
+            return $_SERVER["HTTP_X_FORWARDED"];
+		elseif (isset($_SERVER["HTTP_FORWARDED_FOR"]))
+            return $_SERVER["HTTP_FORWARDED_FOR"];
+		elseif (isset($_SERVER["HTTP_FORWARDED"]))
+            return $_SERVER["HTTP_FORWARDED"];
+		else
+            return $_SERVER["REMOTE_ADDR"];
+	}
+
+	public function browser()
+	{
+		$browser = array("IE", "OPERA", "MOZILLA", "NETSCAPE", "FIREFOX", "SAFARI", "CHROME");
+		$os = array("WIN", "MAC", "LINUX");
+
+		$info['browser'] = "OTHER";
+		$info['os'] = "OTHER";
+
+		foreach ($browser as $parent)
+		{
+			$s = strpos(strtoupper($_SERVER['HTTP_USER_AGENT']), $parent);
+			$f = $s + strlen($parent);
+			$version = substr($_SERVER['HTTP_USER_AGENT'], $f, 15);
+			$version = preg_replace('/[^0-9,.]/', '', $version);
+
+			if ($s)
+			{
+				$info['browser'] = $parent;
+				$info['version'] = $version;
+			}
+		}
+
+		foreach ($os as $val)
+        {
+			if (strpos(strtoupper($_SERVER['HTTP_USER_AGENT']), $val) !== false)
+			$info['os'] = $val;
+		}
+
+		return $info;
+	}
+
+	public static function checkMail($email)
+	{
+		return (filter_var($email, FILTER_VALIDATE_EMAIL)) ? 1 : 0;
+	}
+
+    public static function checkIfExistSpaces($string)
+    {
+        $explode = explode(' ', $string);
+
+        if (count($explode) > 1)
+            return true;
+        else
+            return false;
+    }
+
+    public function randomBytes($length = 16)
 	{
 		$sslStr = '';
 
@@ -215,23 +231,16 @@ class Security
 		return substr($randomStr, 0, $length);
 	}
 
-    /**
-     * Genera un string de caracteres random.
-     *
-     * @param   integer    $length    Tamaño del string.
-     *
-     * @return  string
-     */
-	public function random_string( $length = 8 )
+	public function randomString($length = 8)
 	{
 		$salt = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		$base = strlen($salt);
 		$stringRandom = '';
 
-		$random = $this->random_bytes($length + 1);
+		$random = $this->randomBytes($length + 1);
 		$shift = ord($random[0]);
 
-		for ( $i = 1; $i <= $length; ++$i )
+		for ($i = 1; $i <= $length; ++$i)
 		{
 			$stringRandom .= $salt[($shift + ord($random[$i])) % $base];
 			$shift += ord($random[$i]);
@@ -239,5 +248,4 @@ class Security
 
 		return $stringRandom;
 	}
-
 }
