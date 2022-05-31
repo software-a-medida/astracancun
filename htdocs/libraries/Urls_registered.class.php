@@ -29,14 +29,6 @@ class Urls_registered
                 'controller' => 'Pages',
                 'method' => 'index'
             ],
-            '/programs' => [
-                'controller' => 'Pages',
-                'method' => 'programs'
-            ],
-            '/programs/%param%' => [
-                'controller' => 'Pages',
-                'method' => 'programsView'
-            ],
             '/donations' => [
                 'controller' => 'Pages',
                 'method' => 'donations'
@@ -44,6 +36,15 @@ class Urls_registered
             '/about' => [
                 'controller' => 'Pages',
                 'method' => 'about'
+            ],
+
+            '/programs' => [
+                'controller' => 'Services',
+                'method' => 'index'
+            ],
+            '/programs/%param%' => [
+                'controller' => 'Services',
+                'method' => 'view'
             ],
 
             '/blog' => [
