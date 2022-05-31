@@ -32,8 +32,7 @@ $this->dependencies->add(['js', '{$path.js}Pages/donations.js']);
                                 <h4 class="card-title font-20 m-0 text-primary">Beca a un alumno</h4>
                             </div>
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}beca-alumno.jpeg">
                             </figure>
                             <div class="card-body bg-primary p-0">
                                 <a href="javascript:void(0);" class="btn btn-block btn-lg" style="font-size: 1.8rem;">
@@ -45,11 +44,10 @@ $this->dependencies->add(['js', '{$path.js}Pages/donations.js']);
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <div class="card-body bg-secondary">
-                                <h4 class="card-title font-20 m-0 text-primary">Beca a un alumno</h4>
+                                <h4 class="card-title font-20 m-0 text-primary">Patrocina un atleta</h4>
                             </div>
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}patrocina-atleta.jpeg">
                             </figure>
                             <div class="card-body bg-primary p-0">
                                 <a href="javascript:void(0);" class="btn btn-block btn-lg" style="font-size: 1.8rem;">
@@ -61,11 +59,10 @@ $this->dependencies->add(['js', '{$path.js}Pages/donations.js']);
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <div class="card-body bg-secondary">
-                                <h4 class="card-title font-20 m-0 text-primary">Beca a un alumno</h4>
+                                <h4 class="card-title font-20 m-0 text-primary">Apadrina un artista</h4>
                             </div>
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}apadrina-artista.jpeg">
                             </figure>
                             <div class="card-body bg-primary p-0">
                                 <a href="javascript:void(0);" class="btn btn-block btn-lg" style="font-size: 1.8rem;">
@@ -77,11 +74,10 @@ $this->dependencies->add(['js', '{$path.js}Pages/donations.js']);
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <div class="card-body bg-secondary">
-                                <h4 class="card-title font-20 m-0 text-primary">Beca a un alumno</h4>
+                                <h4 class="card-title font-20 m-0 text-primary">Dona en especie</h4>
                             </div>
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}dona-especie.jpeg">
                             </figure>
                             <div class="card-body bg-primary p-0">
                                 <a href="javascript:void(0);" class="btn btn-block btn-lg" style="font-size: 1.8rem;">
@@ -93,11 +89,10 @@ $this->dependencies->add(['js', '{$path.js}Pages/donations.js']);
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <div class="card-body bg-secondary">
-                                <h4 class="card-title font-20 m-0 text-primary">Beca a un alumno</h4>
+                                <h4 class="card-title font-20 m-0 text-primary">Dona en dinero</h4>
                             </div>
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}dona-dinero.jpeg">
                             </figure>
                             <div class="card-body bg-primary p-0">
                                 <a href="javascript:void(0);" class="btn btn-block btn-lg" style="font-size: 1.8rem;">
@@ -109,11 +104,10 @@ $this->dependencies->add(['js', '{$path.js}Pages/donations.js']);
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <div class="card-body bg-secondary">
-                                <h4 class="card-title font-20 m-0 text-primary">Beca a un alumno</h4>
+                                <h4 class="card-title font-20 m-0 text-primary">Dona tu tiempo</h4>
                             </div>
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}dona-tiempo.jpeg">
                             </figure>
                             <div class="card-body bg-primary p-0">
                                 <a href="javascript:void(0);" class="btn btn-block btn-lg" style="font-size: 1.8rem;">
