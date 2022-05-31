@@ -12,9 +12,6 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
     <main id="main-content">
         <section class="page-cover text-center">
             <div class="background">
-                <figure class="elm-stretched m-0">
-                    <img src="{$path.uploads}donations.jpeg" class="img-cover">
-                </figure>
             </div>
             <div class="container pos-relative text-light">
                 <h2 class="text-uppercase display-4 font-weight-bold">Blog</h2>
@@ -27,11 +24,13 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover" src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover"
+                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
                             </figure>
                             <div class="card-body">
                                 <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
-                                <p class="card-text">A través de programas de difusión sobre los signos precoces del autismo, se promueve l...</p>
+                                <p class="card-text">A través de programas de difusión sobre los signos precoces del
+                                    autismo, se promueve l...</p>
 
                                 <div class="button-items text-right m-t-10">
                                     <a href="/blog/url" class="btn btn-primary waves-effect waves-light">Leer más</a>
@@ -42,11 +41,13 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover" src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover"
+                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
                             </figure>
                             <div class="card-body">
                                 <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
-                                <p class="card-text">A través de programas de difusión sobre los signos precoces del autismo, se promueve l...</p>
+                                <p class="card-text">A través de programas de difusión sobre los signos precoces del
+                                    autismo, se promueve l...</p>
 
                                 <div class="button-items text-right m-t-10">
                                     <a href="/blog/url" class="btn btn-primary waves-effect waves-light">Leer más</a>
@@ -57,11 +58,13 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover" src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover"
+                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
                             </figure>
                             <div class="card-body">
                                 <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
-                                <p class="card-text">A través de programas de difusión sobre los signos precoces del autismo, se promueve l...</p>
+                                <p class="card-text">A través de programas de difusión sobre los signos precoces del
+                                    autismo, se promueve l...</p>
                                 <div class="button-items text-right m-t-10">
                                     <a href="/blog/url" class="btn btn-primary waves-effect waves-light">Leer más</a>
                                 </div>
@@ -71,11 +74,13 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover" src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover"
+                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
                             </figure>
                             <div class="card-body">
                                 <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
-                                <p class="card-text">A través de programas de difusión sobre los signos precoces del autismo, se promueve l...</p>
+                                <p class="card-text">A través de programas de difusión sobre los signos precoces del
+                                    autismo, se promueve l...</p>
 
                                 <div class="button-items text-right m-t-10">
                                     <a href="/blog/url" class="btn btn-primary waves-effect waves-light">Leer más</a>
@@ -86,11 +91,13 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover" src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover"
+                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
                             </figure>
                             <div class="card-body">
                                 <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
-                                <p class="card-text">A través de programas de difusión sobre los signos precoces del autismo, se promueve l...</p>
+                                <p class="card-text">A través de programas de difusión sobre los signos precoces del
+                                    autismo, se promueve l...</p>
 
                                 <div class="button-items text-right m-t-10">
                                     <a href="/blog/url" class="btn btn-primary waves-effect waves-light">Leer más</a>

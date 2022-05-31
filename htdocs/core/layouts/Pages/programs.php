@@ -12,9 +12,6 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
     <main id="main-content">
         <section class="page-cover text-center">
             <div class="background">
-                <figure class="elm-stretched m-0">
-                    <img src="{$path.uploads}zoom_1920x1080_C.jpeg" class="img-cover">
-                </figure>
             </div>
             <div class="container pos-relative text-light">
                 <h2 class="text-uppercase display-4 font-weight-bold">Nuestros programas</h2>
@@ -27,7 +24,8 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover" src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover"
+                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
                             </figure>
                             <div class="card-body">
                                 <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
@@ -43,7 +41,8 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover" src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover"
+                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
                             </figure>
                             <div class="card-body">
                                 <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
@@ -59,7 +58,8 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover" src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover"
+                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
                             </figure>
                             <div class="card-body">
                                 <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
@@ -75,7 +75,8 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-6">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover" src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover"
+                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
                             </figure>
                             <div class="card-body">
                                 <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
@@ -91,7 +92,8 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-6">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover" src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover"
+                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
                             </figure>
                             <div class="card-body">
                                 <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>

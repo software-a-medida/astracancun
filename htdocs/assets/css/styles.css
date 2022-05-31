@@ -507,6 +507,7 @@ ul.contact-info .icon>* {
 #main-content .our_allies .item figure {
     box-shadow: 0 6px 13px 0px rgb(0 0 0 / 5%);
     border: 1px solid #ddd;
+    height: 200px;
 }
 
 #main-content .box {

@@ -7,4 +7,24 @@ defined('_EXEC') or die;
 class Pages
 {
     use \BuriPHP\System\Libraries\Model;
+
+    public function get_gallery($id = null)
+    {
+        if (is_null($id))
+            return false;
+
+        return $this->database->select('media', [
+            'id',
+            'media (image)',
+        ], [
+            'id' => $this->database->select('mygalleries', [
+                'id',
+                'name',
+                'description',
+                'ids [Object]',
+            ], [
+                'id' => $id
+            ])[0]['ids']
+        ]);
+    }
 }

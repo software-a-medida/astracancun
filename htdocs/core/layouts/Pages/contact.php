@@ -17,9 +17,6 @@ $this->dependencies->add(['other', "<script type=\"text/javascript\"> $('form[na
     <main id="main-content">
         <section class="page-cover text-center">
             <div class="background">
-                <figure class="elm-stretched m-0">
-                    <img src="{$path.uploads}donations.jpeg" class="img-cover">
-                </figure>
             </div>
             <div class="container pos-relative text-light">
                 <h2 class="text-uppercase display-4 font-weight-bold">Contáctanos</h2>
