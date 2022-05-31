@@ -259,8 +259,8 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-3">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}blank-profile-picture.png"
+                                    alt="Card image cap">
                             </figure>
                             <div class="card-body text-center">
                                 <h4 class="card-title font-16 m-t-0 m-b-5">Diana Angelica Dávalos Castilla</h4>
@@ -273,12 +273,26 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-3">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}blank-profile-picture.png"
+                                    alt="Card image cap">
                             </figure>
                             <div class="card-body text-center">
-                                <h4 class="card-title font-16 m-t-0 m-b-5">Diana Angelica Dávalos Castilla</h4>
-                                <p class="card-text m-b-10">Presidenta</p>
+                                <h4 class="card-title font-16 m-t-0 m-b-5">M. en C. Martha Basurto Origel</h4>
+                                <p class="card-text m-b-10">Directora Administrativa</p>
+                                <p class="card-text">Toma de decisiones con relación a la operación y desarrollo de la
+                                    organización, participa en la planeacion estratégica.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card m-b-30">
+                            <figure class="img-fluid m-0">
+                                <img class="card-img-top img-cover" src="{$path.images}blank-profile-picture.png"
+                                    alt="Card image cap">
+                            </figure>
+                            <div class="card-body text-center">
+                                <h4 class="card-title font-16 m-t-0 m-b-5">Psic. Verónica Chulim Batún</h4>
+                                <p class="card-text m-b-10">Coordinación CEDA</p>
                                 <p class="card-text">Presidente de la mesa directiva de Asociación de Ayuda a Niños con
                                     Trastornos en el Desarrollo A.C.</p>
                             </div>
@@ -287,140 +301,128 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
                     <div class="col-lg-3">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}blank-profile-picture.png"
+                                    alt="Card image cap">
                             </figure>
                             <div class="card-body text-center">
-                                <h4 class="card-title font-16 m-t-0 m-b-5">Diana Angelica Dávalos Castilla</h4>
-                                <p class="card-text m-b-10">Presidenta</p>
-                                <p class="card-text">Presidente de la mesa directiva de Asociación de Ayuda a Niños con
-                                    Trastornos en el Desarrollo A.C.</p>
+                                <h4 class="card-title font-16 m-t-0 m-b-5">Lic. Amilda Loria Rivero</h4>
+                                <p class="card-text m-b-10">Coordinación CEA</p>
+                                <p class="card-text">Coordinación del programa educativo Centro Escolar Astra para
+                                    alumnos iniciales e intermedios en horario matutino.
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}blank-profile-picture.png"
+                                    alt="Card image cap">
                             </figure>
                             <div class="card-body text-center">
-                                <h4 class="card-title font-16 m-t-0 m-b-5">Diana Angelica Dávalos Castilla</h4>
-                                <p class="card-text m-b-10">Presidenta</p>
-                                <p class="card-text">Presidente de la mesa directiva de Asociación de Ayuda a Niños con
-                                    Trastornos en el Desarrollo A.C.</p>
+                                <h4 class="card-title font-16 m-t-0 m-b-5">Lic. Yessica Puc Gamboa</h4>
+                                <p class="card-text m-b-10">Coordinación Casa Astra</p>
+                                <p class="card-text">Gestíon, planificación y supervisión de actividades junto a
+                                    maestros y terapeutas para los jóvenes de Casa Astra "Una Escuela para la vida"</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}blank-profile-picture.png"
+                                    alt="Card image cap">
                             </figure>
                             <div class="card-body text-center">
-                                <h4 class="card-title font-16 m-t-0 m-b-5">Diana Angelica Dávalos Castilla</h4>
-                                <p class="card-text m-b-10">Presidenta</p>
-                                <p class="card-text">Presidente de la mesa directiva de Asociación de Ayuda a Niños con
-                                    Trastornos en el Desarrollo A.C.</p>
+                                <h4 class="card-title font-16 m-t-0 m-b-5">Dulce M. Rodriguez Bautista</h4>
+                                <p class="card-text m-b-10">Control Escolar</p>
+                                <p class="card-text">Atención de padres de familia, control de citas para entrevistas de
+                                    primera vez y asuntos referentes a los alumnos de nuevo ingreso.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}blank-profile-picture.png"
+                                    alt="Card image cap">
                             </figure>
                             <div class="card-body text-center">
-                                <h4 class="card-title font-16 m-t-0 m-b-5">Diana Angelica Dávalos Castilla</h4>
-                                <p class="card-text m-b-10">Presidenta</p>
-                                <p class="card-text">Presidente de la mesa directiva de Asociación de Ayuda a Niños con
-                                    Trastornos en el Desarrollo A.C.</p>
+                                <h4 class="card-title font-16 m-t-0 m-b-5">Lic. Belen García Ancona</h4>
+                                <p class="card-text m-b-10">Coordinación de Proyectos</p>
+                                <p class="card-text">Gestión técnica y financiera de la ejecución de proyectos que
+                                    financien programas de la institución.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}blank-profile-picture.png"
+                                    alt="Card image cap">
                             </figure>
                             <div class="card-body text-center">
-                                <h4 class="card-title font-16 m-t-0 m-b-5">Diana Angelica Dávalos Castilla</h4>
-                                <p class="card-text m-b-10">Presidenta</p>
-                                <p class="card-text">Presidente de la mesa directiva de Asociación de Ayuda a Niños con
-                                    Trastornos en el Desarrollo A.C.</p>
+                                <h4 class="card-title font-16 m-t-0 m-b-5">M. en C. Ebert May Chiquil</h4>
+                                <p class="card-text m-b-10">Capacitación</p>
+                                <p class="card-text">Psicoterapeuta especializado en el modelo Denver ESDM (Early Start
+                                    Denver Model), creado por el institito Mind de la Universidad de California Davis.
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}blank-profile-picture.png"
+                                    alt="Card image cap">
                             </figure>
                             <div class="card-body text-center">
-                                <h4 class="card-title font-16 m-t-0 m-b-5">Diana Angelica Dávalos Castilla</h4>
-                                <p class="card-text m-b-10">Presidenta</p>
-                                <p class="card-text">Presidente de la mesa directiva de Asociación de Ayuda a Niños con
-                                    Trastornos en el Desarrollo A.C.</p>
+                                <h4 class="card-title font-16 m-t-0 m-b-5">Jessica de León Hernández</h4>
+                                <p class="card-text m-b-10">Terapeuta Denver</p>
+                                <p class="card-text">Terapeuta especializada en metodo Denver para niños con autismo
+                                    menores de 4 años.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}blank-profile-picture.png"
+                                    alt="Card image cap">
                             </figure>
                             <div class="card-body text-center">
-                                <h4 class="card-title font-16 m-t-0 m-b-5">Diana Angelica Dávalos Castilla</h4>
-                                <p class="card-text m-b-10">Presidenta</p>
-                                <p class="card-text">Presidente de la mesa directiva de Asociación de Ayuda a Niños con
-                                    Trastornos en el Desarrollo A.C.</p>
+                                <h4 class="card-title font-16 m-t-0 m-b-5">Karen Briceño Delgadillo</h4>
+                                <p class="card-text m-b-10">Terapeuta Denver</p>
+                                <p class="card-text">Terapeuta especializada en metodo Denver para niños con autismo
+                                    menores de 4 años.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}blank-profile-picture.png"
+                                    alt="Card image cap">
                             </figure>
                             <div class="card-body text-center">
-                                <h4 class="card-title font-16 m-t-0 m-b-5">Diana Angelica Dávalos Castilla</h4>
-                                <p class="card-text m-b-10">Presidenta</p>
-                                <p class="card-text">Presidente de la mesa directiva de Asociación de Ayuda a Niños con
-                                    Trastornos en el Desarrollo A.C.</p>
+                                <h4 class="card-title font-16 m-t-0 m-b-5">Ana Maria Gómez Bravo</h4>
+                                <p class="card-text m-b-10">Integración Escolar</p>
+                                <p class="card-text">Coordinación de acciones psico-pedagógicas que permitan la
+                                    integración de niños y niñas con autismo a escuelas regulares.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.images}blank-profile-picture.png"
+                                    alt="Card image cap">
                             </figure>
                             <div class="card-body text-center">
-                                <h4 class="card-title font-16 m-t-0 m-b-5">Diana Angelica Dávalos Castilla</h4>
-                                <p class="card-text m-b-10">Presidenta</p>
-                                <p class="card-text">Presidente de la mesa directiva de Asociación de Ayuda a Niños con
-                                    Trastornos en el Desarrollo A.C.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="card m-b-30">
-                            <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
-                            </figure>
-                            <div class="card-body text-center">
-                                <h4 class="card-title font-16 m-t-0 m-b-5">Diana Angelica Dávalos Castilla</h4>
-                                <p class="card-text m-b-10">Presidenta</p>
-                                <p class="card-text">Presidente de la mesa directiva de Asociación de Ayuda a Niños con
-                                    Trastornos en el Desarrollo A.C.</p>
+                                <h4 class="card-title font-16 m-t-0 m-b-5">LCH. Laura Herrera</h4>
+                                <p class="card-text m-b-10">Terapeuta de Lenguaje</p>
+                                <p class="card-text">Terapeuta especializada en atención del desarrollo de lenguaje en
+                                    niños y niñas con autismo y discapacidad intelectual.</p>
                             </div>
                         </div>
                     </div>
