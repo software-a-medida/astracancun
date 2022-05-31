@@ -520,4 +520,5 @@ ul.contact-info .icon>* {
     box-shadow: var(--shadow);
     font-size: 1.2rem;
     color: #505050;
+    min-height: 50vh;
 }

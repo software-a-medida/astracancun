@@ -40,6 +40,7 @@ class Urls_registered
         $urls = array_merge($urls, Component::urls('Media'));
         $urls = array_merge($urls, Component::urls('Blog'));
         $urls = array_merge($urls, Component::urls('MyGallery'));
+        $urls = array_merge($urls, Component::urls('MyServices'));
 
         return $urls;
     }

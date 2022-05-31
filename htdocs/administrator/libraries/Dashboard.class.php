@@ -37,6 +37,11 @@ class Dashboard
             'url' => 'index.php/gallery',
             'icon' => 'dripicons-photo-group'
         ];
+        $menu[] = [
+            'name' => 'Servicios',
+            'url' => 'index.php/services',
+            'icon' => 'dripicons-briefcase'
+        ];
 
         return $menu;
     }

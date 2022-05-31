@@ -4,6 +4,8 @@ namespace BuriPHP\Core\Controllers;
 
 defined('_EXEC') or die;
 
+use BuriPHP\System\Libraries\{Errors};
+
 class Pages
 {
 	use \BuriPHP\System\Libraries\Controller;
@@ -19,14 +21,26 @@ class Pages
 
 	public function programs()
 	{
+		global $services;
+		$services = $this->model->get_services();
+
 		define('_title', 'Nuestros programas - ' . \BuriPHP\Configuration::$web_page);
 		return $this->view->render(PATH_LAYOUTS . 'Pages/programs.php');
 	}
 
-	public function programsView()
+	public function programsView($param)
 	{
-		define('_title', 'Nuestros programas - ' . \BuriPHP\Configuration::$web_page);
-		return $this->view->render(PATH_LAYOUTS . 'Pages/programsView.php');
+		$response = $this->model->get_services($param[0]);
+
+		if (count($response) > 0) {
+			global $data;
+			$data = $response[0];
+
+			define('_title', 'Nuestros programas - ' . \BuriPHP\Configuration::$web_page);
+			return $this->view->render(PATH_LAYOUTS . 'Pages/programsView.php');
+		} else {
+			Errors::http('404');
+		}
 	}
 
 	public function donations()
