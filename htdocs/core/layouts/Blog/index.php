@@ -21,90 +21,27 @@ $this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.c
         <section class="p-tb-50">
             <div class="container">
                 <div class="row">
+                    <?php foreach ($blog as $key => $value) : ?>
                     <div class="col-lg-4">
                         <div class="card m-b-30">
                             <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
+                                <img class="card-img-top img-cover" src="{$path.uploads}<?= $value['image'] ?>">
                             </figure>
                             <div class="card-body">
-                                <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
-                                <p class="card-text">A través de programas de difusión sobre los signos precoces del
-                                    autismo, se promueve l...</p>
+                                <h4 class="card-title font-20 m-t-0"><?= $value['title'] ?></h4>
+                                <p class="card-text">
+                                    <?= substr(html_entity_decode(preg_replace(['/\s+/', '/^\s|\s$/'], [' ', ''], str_replace('&nbsp;', ' ', strip_tags(json_decode($value['content']))))), 0, 100) ?>
+                                    ...
+                                </p>
 
                                 <div class="button-items text-right m-t-10">
-                                    <a href="/blog/url" class="btn btn-primary waves-effect waves-light">Leer más</a>
+                                    <a href="/blog/<?= $value['url'] ?>"
+                                        class="btn btn-primary waves-effect waves-light">Leer más</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="card m-b-30">
-                            <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
-                            </figure>
-                            <div class="card-body">
-                                <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
-                                <p class="card-text">A través de programas de difusión sobre los signos precoces del
-                                    autismo, se promueve l...</p>
-
-                                <div class="button-items text-right m-t-10">
-                                    <a href="/blog/url" class="btn btn-primary waves-effect waves-light">Leer más</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card m-b-30">
-                            <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
-                            </figure>
-                            <div class="card-body">
-                                <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
-                                <p class="card-text">A través de programas de difusión sobre los signos precoces del
-                                    autismo, se promueve l...</p>
-                                <div class="button-items text-right m-t-10">
-                                    <a href="/blog/url" class="btn btn-primary waves-effect waves-light">Leer más</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card m-b-30">
-                            <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
-                            </figure>
-                            <div class="card-body">
-                                <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
-                                <p class="card-text">A través de programas de difusión sobre los signos precoces del
-                                    autismo, se promueve l...</p>
-
-                                <div class="button-items text-right m-t-10">
-                                    <a href="/blog/url" class="btn btn-primary waves-effect waves-light">Leer más</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card m-b-30">
-                            <figure class="img-fluid m-0">
-                                <img class="card-img-top img-cover"
-                                    src="https://via.placeholder.com/800x533/34404b/5c6872" alt="Card image cap">
-                            </figure>
-                            <div class="card-body">
-                                <h4 class="card-title font-20 m-t-0">ATENCIÓN TEMPRANA DEL AUTISMO</h4>
-                                <p class="card-text">A través de programas de difusión sobre los signos precoces del
-                                    autismo, se promueve l...</p>
-
-                                <div class="button-items text-right m-t-10">
-                                    <a href="/blog/url" class="btn btn-primary waves-effect waves-light">Leer más</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </section>

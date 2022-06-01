@@ -10,6 +10,9 @@ class Blog
 
 	public function index()
 	{
+		global $blog;
+		$blog = $this->model->get();
+
 		define('_title', 'Inicio - ' . \BuriPHP\Configuration::$web_page);
 		return $this->view->render(PATH_LAYOUTS . 'Blog/index.php');
 	}
