@@ -148,19 +148,24 @@ class Language
      */
     public function get_list_language()
     {
-        $route = PATH_LANGUAGE;
-        $codes_language_iso = $this->format->import_file(PATH_INCLUDES, 'codes_countries_iso', 'json');
+        $codes_language_iso = $this->format->import_file(PATH_INCLUDES, 'codes_language_iso', 'json');
         $langs = [];
 
         // Abre un gestor de directorios para la ruta indicada
-        $manager = opendir($route);
+        $manager = opendir(PATH_LANGUAGE);
 
         // Recorre todos los elementos del directorio
         while (($file = readdir($manager)) !== false) {
             // Se muestran todos los archivos y carpetas excepto "." y ".."
-            if ($file != "." && $file != ".." && strlen(pathinfo($file, PATHINFO_FILENAME)) === 2 && !strpos($file, '_') && !is_dir(Security::DS($route . "/" . $file))) {
+            if (
+                $file != "."
+                && $file != ".."
+                && strlen(pathinfo($file, PATHINFO_FILENAME)) === 2
+                && !strpos($file, '_')
+                && !is_dir(Security::DS(PATH_LANGUAGE . "/" . $file))
+            ) {
                 $code = pathinfo($file, PATHINFO_FILENAME);
-                $key = array_search($code, array_column($codes_language_iso, 'iso2'));
+                $key = array_search($code, array_column($codes_language_iso, 'iso1'));
 
                 $langs[] = $codes_language_iso[$key];
             }
