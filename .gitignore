@@ -1,4 +1,4 @@
 **/.DS_Store
 /htdocs/uploads/**
-!/htdocs/uploads/keep
+!/htdocs/uploads/.keep
 htdocs/configuration.php
