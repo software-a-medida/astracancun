@@ -8,21 +8,30 @@
 
             <ul class="list-inline m-0">
                 <li class="list-inline-item m-r-20">
-                    <a href="javascript:void(0);" class="btn btn-light btn-lg">¡DONAR AHORA!</a>
+                    <a href="/donations" class="btn btn-light btn-lg">¡DONAR AHORA!</a>
                 </li>
                 <li class="list-inline-item m-r-20">
-                    <a href="javascript:void(0);" class="btn btn-light btn-link btn-lg p-0" style="font-size: 35px;">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                </li>
-                <li class="list-inline-item m-r-20">
-                    <a href="javascript:void(0);" class="btn btn-light btn-link btn-lg p-0" style="font-size: 35px;">
+                    <a href="https://facebook.com/astracancun" target="_blank" class="btn btn-light btn-link btn-lg p-0"
+                        style="font-size: 35px;">
                         <i class="fa fa-facebook"></i>
                     </a>
                 </li>
+                <li class="list-inline-item m-r-20">
+                    <a href="https://instagram.com/astracancun" target="_blank"
+                        class="btn btn-light btn-link btn-lg p-0" style="font-size: 35px;">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </li>
                 <li class="list-inline-item">
-                    <a href="javascript:void(0);" class="btn btn-light btn-link btn-lg p-0" style="font-size: 35px;">
+                    <a href="https://twitter.com/astracancun" target="_blank" class="btn btn-light btn-link btn-lg p-0"
+                        style="font-size: 35px;">
                         <i class="fa fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="list-inline-item m-r-20">
+                    <a href="https://www.youtube.com/channel/UCaRLrVXlIvfEytQjj7Hg2Jw" target="_blank"
+                        class="btn btn-light btn-link btn-lg p-0" style="font-size: 35px;">
+                        <i class="fa fa-youtube"></i>
                     </a>
                 </li>
             </ul>
@@ -31,7 +40,7 @@
     <section class="copyright">
         <div class="container">
             © <?= date('Y') ?> <b>{$_webpage}</b> <i class="mdi mdi-heart text-danger"></i>
-            by <a href="https://codemonkey.com.mx" target="_blank">codemonkey.com.mx</a>
+            by <a href="https://codemonkey.com.mx" target="_blank" class="text-light">codemonkey.com.mx</a>
             - <a href="javascript:void(0);" class="text-light">Avisos de privacidad</a>
             - <a href="javascript:void(0);" class="text-light">Transparencia</a>
         </div>

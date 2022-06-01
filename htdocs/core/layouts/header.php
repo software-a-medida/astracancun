@@ -10,7 +10,7 @@
             <nav class="visible-desktop visible-desktop-large">
                 <ul class="list-inline m-0">
                     <li class="list-inline-item m-0">
-                        <a href="/" class="btn btn-link text-uppercase btn-donar">
+                        <a href="/donations" class="btn btn-link text-uppercase btn-donar">
                             <i class="fa fa-heart"></i>
                             Donar
                         </a>

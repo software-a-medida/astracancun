@@ -42,7 +42,7 @@ $this->dependencies->add(['js', '{$path.js}Pages/index.js']);
                     conformar un equipo de profesionales y un modelo educativo basado en buenas prácticas de
                     intervención centrado en la persona, con enfoque sistémico familiar y de derechos de las personas
                     con discapacidad.</p>
-                <div class="button-items text-center m-t-50"> <a href="javascript:void(0);"
+                <div class="button-items text-center m-t-50"> <a href="/programs"
                         class="btn btn-outline btn-light btn-lg m-0">Nuestros programas</a> </div>
             </div>
             <div class="p-tb-50"></div>
@@ -87,7 +87,7 @@ $this->dependencies->add(['js', '{$path.js}Pages/index.js']);
                 </div>
 
                 <div class="button-items text-center m-t-50">
-                    <a href="javascript:void(0);" class="btn btn-outline btn-primary btn-lg m-0">Sé un aliado</a>
+                    <a href="/donations" class="btn btn-outline btn-primary btn-lg m-0">Sé un aliado</a>
                 </div>
             </div>
         </section>
