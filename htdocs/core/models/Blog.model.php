@@ -36,6 +36,7 @@ class Blog
             'blog.title',
             'blog_categories.title(category) [Object] ',
             'blog.id_category',
+            'blog.lang',
             'blog.image',
             'blog.content',
             'blog.sm_title',

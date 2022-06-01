@@ -35,6 +35,7 @@ class Blog
 			'blog.title',
 			'blog_categories.title(category) [Object] ',
 			'blog.id_category',
+			'blog.lang',
 			'blog.image',
 			'blog.content',
 			'blog.sm_title',
@@ -59,7 +60,8 @@ class Blog
 			'tags' => ( !is_null($data['tags']) ) ? explode(',', trim($data['tags'], ',')) : null,
 			'author' => Session::get_value('__id_user'),
 			'sm_title' => $data['sm_title'],
-			'sm_description' => $data['sm_description']
+			'sm_description' => $data['sm_description'],
+			'lang' => $data['lang']
 		];
 
 		$component = new Component();

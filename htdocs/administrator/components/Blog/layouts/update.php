@@ -62,7 +62,7 @@ $this->dependencies->add(['other', '<script>$.app.addButtonsAction({
         <!-- end page title end breadcrumb -->
 
         <form name="update" class="row font-14">
-            <?= $this->format->get_file( Security::DS(Component::LAYOUTS . 'templates/form.php'), ['data' => $data] ); ?>
+            <?= $this->format->get_file( Security::DS(Component::LAYOUTS . 'templates/form.php'), ['langs' => $langs, 'data' => $data] ); ?>
         </form>
     </div>
 </main>

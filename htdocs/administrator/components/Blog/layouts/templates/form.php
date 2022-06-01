@@ -1,7 +1,7 @@
 <?php
 defined('_EXEC') or die;
 
-use \BuriPHP\System\Libraries\{Format,Security};
+use \BuriPHP\System\Libraries\{Language,Format,Security};
 use \BuriPHP\Administrator\Components\Blog\Component;
 
 // Bootstrap-inputmask
@@ -44,6 +44,28 @@ $this->dependencies->add(['js', '{$path.components}Blog/assets/js/templates/form
                                 <option value="">Sin categoría</option>
                             </select>
                             <p class="description text-muted">Elige una categoría.</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-3">
+                    <h6 class="p-t-5">Idioma</h6>
+                </div>
+                <div class="col-md-3">
+                    <div class="label">
+                        <label>
+                            <select name="lang">
+                                <?php foreach ( (new Language())->get_list_language() as $value ): ?>
+                                    <option value="<?= $value['iso1'] ?>" <?= ( isset($data) && $value['iso1'] === $data['lang'] || !isset($data) && $value['iso1'] == \BuriPHP\Configuration::$lang_default ) ? 'selected' : '' ?> ><?= $value['name'] ?></option>
+                                <?php endforeach; ?>
+
+                                <?php if ( isset($data) && is_bool(array_search($data['lang'], array_column((new Language())->get_list_language(), 'iso1'))) ): ?>
+                                    <option value="<?= $langs[array_search($data['lang'], array_column($langs, 'iso1'))]['iso1'] ?>" selected><?= $langs[array_search($data['lang'], array_column($langs, 'iso1'))]['name'] ?></option>
+                                <?php endif; ?>
+                            </select>
+                            <p class="description text-muted">Elige el idioma.</p>
                         </label>
                     </div>
                 </div>

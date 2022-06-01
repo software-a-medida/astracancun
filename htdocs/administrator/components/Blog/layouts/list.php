@@ -1,8 +1,7 @@
 <?php
 defined('_EXEC') or die;
 
-use \BuriPHP\System\Libraries\{Session, Security};
-use \Libraries\{Dates};
+use \BuriPHP\System\Libraries\{Session, Security, Language, Dates};
 use \BuriPHP\Administrator\Components\Blog\Component;
 
 // Pages
@@ -24,7 +23,7 @@ $this->dependencies->add(['other', '<script>$.app.addButtonsAction({
 
 $this->dependencies->add(['other', '<script>$.app.addButtonsAction({
     "button": {
-        "text": "Nueva entrada",
+        "text": "Nuevo servicio",
         "class": "btn btn-success waves-effect waves-light",
         "href": "index.php/blog/create"
     }
@@ -60,6 +59,7 @@ $this->dependencies->add(['other', '<script>$.app.addButtonsAction({
                                         <th>ID</th>
                                         <th>Servicio</th>
                                         <th>Categoría</th>
+                                        <th class="text-center">Idioma</th>
                                         <th class="text-center">Fecha de creación</th>
                                         <th>Autor</th>
                                         <th></th>
@@ -67,30 +67,41 @@ $this->dependencies->add(['other', '<script>$.app.addButtonsAction({
                                 </thead>
                                 <tbody>
                                     <?php if (empty($data)) : ?>
-                                        <tr>
-                                            <td class="table-empty" colspan="7">
-                                                <p class="m-0 text-muted">Sin entradas al blog.</p>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td class="table-empty" colspan="8">
+                                            <p class="m-0 text-muted">Sin entradas al blog.</p>
+                                        </td>
+                                    </tr>
                                     <?php endif; ?>
 
                                     <?php foreach ($data as $value) : ?>
-                                        <tr>
-                                            <td>#<?= $value['id'] ?></td>
-                                            <td><?= $value['title'] ?></td>
-                                            <td><?= (is_null($value['category'])) ? 'Sin categoría' : $value['category']['es'] ?></td>
-                                            <td class="text-center"><?= Dates::formatted_date($value['publication_date']) ?></td>
-                                            <td><?= $value['username'] ?></td>
-                                            <td>
-                                                <div class="content-cell">
-                                                    <div class="button-items text-right">
-                                                        <a href="<?= (new Component())->url_public_component(true) ?><?= $value['url'] ?>" target="_blank" class="btn waves-effect waves-light"><i class="fa fa-link"></i></a>
-                                                        <a href="index.php/blog/update?id=<?= $value['id'] ?>" class="btn waves-effect waves-light">Modificar</a>
-                                                        <a href="javascript:void(0);" class="btn btn-danger waves-effect waves-light" data-ajax-delete="<?= $value['id'] ?>"><i class="fa fa-trash"></i></a>
-                                                    </div>
+                                    <tr>
+                                        <td>#<?= $value['id'] ?></td>
+                                        <td><?= $value['title'] ?></td>
+                                        <td><?= (is_null($value['category'])) ? 'Sin categoría' : $value['category']['es'] ?>
+                                        </td>
+                                        <td class="text-center">
+                                            <?= $langs[array_search($value['lang'], array_column($langs, 'iso1'))]['name'] ?>
+                                        </td>
+                                        <td class="text-center"><?= Dates::formatted_date($value['publication_date']) ?>
+                                        </td>
+                                        <td><?= $value['username'] ?></td>
+                                        <td>
+                                            <div class="content-cell">
+                                                <div class="button-items text-right">
+                                                    <a href="<?= (new Component())->url_public_component(true) ?><?= $value['url'] ?>"
+                                                        target="_blank" class="btn waves-effect waves-light"><i
+                                                            class="fa fa-link"></i></a>
+                                                    <a href="index.php/blog/update?id=<?= $value['id'] ?>"
+                                                        class="btn waves-effect waves-light">Modificar</a>
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-danger waves-effect waves-light"
+                                                        data-ajax-delete="<?= $value['id'] ?>"><i
+                                                            class="fa fa-trash"></i></a>
                                                 </div>
-                                            </td>
-                                        </tr>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>

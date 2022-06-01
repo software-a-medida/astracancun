@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `url` text NOT NULL,
   `title` text NOT NULL,
   `id_category` bigint(20) DEFAULT NULL,
+  `lang` tinytext DEFAULT NULL,
   `image` text DEFAULT NULL,
   `content` longtext DEFAULT NULL,
   `sm_title` text DEFAULT NULL,
