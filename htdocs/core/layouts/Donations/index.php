@@ -35,7 +35,8 @@ $this->dependencies->add(['js', '{$path.js}Pages/donations.js']);
                                 <img class="card-img-top img-cover" src="{$path.images}beca-alumno.jpeg">
                             </figure>
                             <div class="card-body bg-primary p-0">
-                                <a href="javascript:void(0);" class="btn btn-block btn-lg" style="font-size: 1.8rem;">
+                                <a href="/donations/beca-alumno" class="btn btn-block btn-lg"
+                                    style="font-size: 1.8rem;">
                                     <i class="fa fa-heart m-r-10"></i> Donar ahora!
                                 </a>
                             </div>
@@ -50,7 +51,8 @@ $this->dependencies->add(['js', '{$path.js}Pages/donations.js']);
                                 <img class="card-img-top img-cover" src="{$path.images}patrocina-atleta.jpeg">
                             </figure>
                             <div class="card-body bg-primary p-0">
-                                <a href="javascript:void(0);" class="btn btn-block btn-lg" style="font-size: 1.8rem;">
+                                <a href="/donations/patrocina-atleta" class="btn btn-block btn-lg"
+                                    style="font-size: 1.8rem;">
                                     <i class="fa fa-heart m-r-10"></i> Donar ahora!
                                 </a>
                             </div>
@@ -65,7 +67,8 @@ $this->dependencies->add(['js', '{$path.js}Pages/donations.js']);
                                 <img class="card-img-top img-cover" src="{$path.images}apadrina-artista.jpeg">
                             </figure>
                             <div class="card-body bg-primary p-0">
-                                <a href="javascript:void(0);" class="btn btn-block btn-lg" style="font-size: 1.8rem;">
+                                <a href="/donations/apadrina-artista" class="btn btn-block btn-lg"
+                                    style="font-size: 1.8rem;">
                                     <i class="fa fa-heart m-r-10"></i> Donar ahora!
                                 </a>
                             </div>
@@ -80,7 +83,8 @@ $this->dependencies->add(['js', '{$path.js}Pages/donations.js']);
                                 <img class="card-img-top img-cover" src="{$path.images}dona-especie.jpeg">
                             </figure>
                             <div class="card-body bg-primary p-0">
-                                <a href="javascript:void(0);" class="btn btn-block btn-lg" style="font-size: 1.8rem;">
+                                <a href="/donations/dona-especie" class="btn btn-block btn-lg"
+                                    style="font-size: 1.8rem;">
                                     <i class="fa fa-heart m-r-10"></i> Donar ahora!
                                 </a>
                             </div>
@@ -95,7 +99,8 @@ $this->dependencies->add(['js', '{$path.js}Pages/donations.js']);
                                 <img class="card-img-top img-cover" src="{$path.images}dona-dinero.jpeg">
                             </figure>
                             <div class="card-body bg-primary p-0">
-                                <a href="javascript:void(0);" class="btn btn-block btn-lg" style="font-size: 1.8rem;">
+                                <a href="/donations/dona-dinero" class="btn btn-block btn-lg"
+                                    style="font-size: 1.8rem;">
                                     <i class="fa fa-heart m-r-10"></i> Donar ahora!
                                 </a>
                             </div>
@@ -110,7 +115,8 @@ $this->dependencies->add(['js', '{$path.js}Pages/donations.js']);
                                 <img class="card-img-top img-cover" src="{$path.images}dona-tiempo.jpeg">
                             </figure>
                             <div class="card-body bg-primary p-0">
-                                <a href="javascript:void(0);" class="btn btn-block btn-lg" style="font-size: 1.8rem;">
+                                <a href="/donations/dona-tiempo" class="btn btn-block btn-lg"
+                                    style="font-size: 1.8rem;">
                                     <i class="fa fa-heart m-r-10"></i> Donar ahora!
                                 </a>
                             </div>
