@@ -1,10 +1,4 @@
-<?php
-defined('_EXEC') or die;
-
-// OWL-Carousel
-$this->dependencies->add(['js', '{$path.plugins}OwlCarousel2-2.3.4/owl.carousel.min.js']);
-$this->dependencies->add(['css', '{$path.plugins}OwlCarousel2-2.3.4/assets/owl.carousel.min.css']);
-?>
+<?php defined('_EXEC') or die; ?>
 
 <div id="page">
     %{header}%
