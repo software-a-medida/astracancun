@@ -17,15 +17,6 @@ class Pages
 		return $this->view->render(PATH_LAYOUTS . 'Pages/index.php');
 	}
 
-	public function donations()
-	{
-		global $allies_logos;
-		$allies_logos = $this->model->get_gallery(1);
-
-		define('_title', 'Sé un aliado - ' . \BuriPHP\Configuration::$web_page);
-		return $this->view->render(PATH_LAYOUTS . 'Pages/donations.php');
-	}
-
 	public function about()
 	{
 		define('_title', 'Sé un aliado - ' . \BuriPHP\Configuration::$web_page);

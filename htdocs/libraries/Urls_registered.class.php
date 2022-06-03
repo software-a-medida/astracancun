@@ -29,13 +29,18 @@ class Urls_registered
                 'controller' => 'Pages',
                 'method' => 'index'
             ],
-            '/donations' => [
-                'controller' => 'Pages',
-                'method' => 'donations'
-            ],
             '/about' => [
                 'controller' => 'Pages',
                 'method' => 'about'
+            ],
+
+            '/donations' => [
+                'controller' => 'Donations',
+                'method' => 'index'
+            ],
+            '/donations/%param%' => [
+                'controller' => 'Donations',
+                'method' => 'view'
             ],
 
             '/programs' => [
